@@ -1,0 +1,32 @@
+.scroll-gallery {
+    overflow: hidden;
+    width: 100%;
+    background: #160d24;
+    padding: 10px 0;
+}
+
+.scroll-track {
+    display: flex;
+    gap: 20px;
+    animation: scroll-left 30s linear infinite;
+}
+
+.scroll-track img {
+    height: 250px;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.scroll-track img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
