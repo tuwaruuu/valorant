@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 0.3em;
+}
+
+#container {
+    position: relative;
+    width: 300px;
+    margin-bottom: 1em;
+}
+
+#silhouette {
+    width: 100%;
+    display: block;
+}
+
+/* クリックエリア */
+.hitbox {
+    position: absolute;
+    cursor: pointer;
+    /* 半透明で場所がわかりやすい（本番は透明に） */
+    background-color: rgba(255, 0, 0, 0.3);
+    border-radius: 50%;
+}
+
+#head {
+    top: 10%;
+    left: 40%;
+    width: 20%;
+    height: 16%;
+}
+
+#body {
+    top: 25%;
+    left: 35%;
+    width: 30%;
+    height: 40%;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 255, 0.2);
+}
+
+#legs {
+    top: 70%;
+    left: 37%;
+    width: 25%;
+    height: 25%;
+    border-radius: 15px;
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+select {
+    font-size: 1.1em;
+    padding: 0.3em;
+    margin-bottom: 1em;
+}
+
+#damageDisplay {
+    font-weight: bold;
+    font-size: 1.3em;
+    min-height: 1.5em;
+}

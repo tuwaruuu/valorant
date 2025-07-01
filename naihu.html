@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>タクティカルナイフ</title>
+    <style>
+        body {
+            background: radial-gradient(circle, #020304 0%, #162330 70%, #000000 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #fd4f4f;
+            border-bottom: 7px solid #fd4f4f;
+            padding-bottom: 5px;
+            font-size: 60px;
+        }
+
+        h3 {
+            color: #ff8800;
+            padding-bottom: 5px;
+            font-size: 30px;
+        }
+
+        main {
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+        }
+
+        .text-box {
+            flex: 1;
+            padding-right: 30px;
+        }
+
+        .text-box p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        .image-box {
+            flex: 1;
+            text-align: right;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .detail-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+        }
+
+        .detail-text {
+            flex: 1;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .detail-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .detail-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+
+            .container,
+            .detail-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .text-box,
+            .detail-text {
+                padding: 0;
+            }
+
+            .image-box,
+            .detail-image {
+                text-align: center;
+                margin-top: 20px;
+            }
+        }
+
+        #detail-text {
+            font-size: 70px;
+            color: #fd4f4f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="text-box">
+            <h3></h3>
+            <h2>タクティカルナイフ</h2>
+            <p>
+                近接武器は初期装備かつ購入・売却を行うことができない近接武器であり、距離や命中部位に関わらず通常攻撃では50ダメージ、
+                オルト攻撃では75ダメージを与えることができ、装備状態の移動速度が全武器中最速である点が特徴的。
+                基本的に近接武器を攻撃目的で使用することはなく、
+                セットアップやローテートなどを行う際の移動時間を削減する場合か、シャッターやバリアオーブなどの
+                障害物を破壊する場合でのみ活用されます。
+                ただし例外として、「スパイクラッシュ」の武器で「オペレーター」が抽選され、近距離での撃ち合いが発生した場合は近接武器で戦った方がキルを取りやすいので覚えておくと良いかもしれません。
+            </p>
+        </div>
+        <div class="image-box">
+            <img src="buki\top\タクティカルナイフトップ.png" alt="タクティカルナイフ">
+        </div>
+    </div>
+
+
+
+    <footer style="text-align: center; padding: 20px; color: #888;">
+        &copy; 2025 VALORANT Info Summary
+    </footer>
+
+</body>
+
+</html>

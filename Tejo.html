@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>テホ</title>
+    <style>
+        body {
+            background: radial-gradient(circle, #020304 0%, #162330 70%, #000000 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #fd4f4f;
+            border-bottom: 7px solid #fd4f4f;
+            padding-bottom: 5px;
+            font-size: 60px;
+        }
+
+        h3 {
+            color: #ff8800;
+            padding-bottom: 5px;
+            font-size: 30px;
+        }
+
+        main {
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+        }
+
+        .text-box {
+            flex: 1;
+            padding-right: 30px;
+        }
+
+        .text-box p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        .image-box {
+            flex: 1;
+            text-align: right;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .icon-list {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin-bottom: 30px;
+        }
+
+        .icon-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .icon-wrapper img {
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+        }
+
+        .icon-wrapper img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #fd4f4f, 0 0 25px #fd4f4f;
+        }
+
+        .icon-wrapper img.selected {
+            border: 3px solid #fd4f4f;
+            box-shadow: 0 0 20px #fd4f4f;
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+
+        .icon-wrapper:hover .tooltip {
+            opacity: 1;
+        }
+
+        .detail-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+        }
+
+        .detail-text {
+            flex: 1;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .detail-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .detail-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container,
+            .detail-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .text-box,
+            .detail-text {
+                padding: 0;
+            }
+
+            .image-box,
+            .detail-image {
+                text-align: center;
+                margin-top: 20px;
+            }
+        }
+
+        #detail-text {
+            font-size: 70px;
+            color: #fd4f4f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="text-box">
+            <h3></h3>
+            <h2>テホ</h2>
+            <p>
+                テホはコロンビア出身の退役軍人であり、
+                諜報コンサルタントだ。彼の弾道誘導システムは敵に陣地を明け渡すか、
+                または命を差し出すかの選択を迫る。
+                その精密な攻撃は敵を揺るがし、彼の狙いのもとに押さえ込む。
+            </p>
+        </div>
+        <div class="image-box">
+            <img src="agent_img/テホ.png" alt="テホ">
+        </div>
+    </div>
+
+    <div class="icon-list">
+        <div class="icon-wrapper">
+            <img src="テホ/テホQ.avif" alt="ステルスドローン" onclick="showDetail(0)">
+            <div class="tooltip">ステルスドローン</div>
+        </div>
+        <div class="icon-wrapper">
+            <img src="テホ/テホE.avif" alt="スペシャルデリバリー" onclick="showDetail(1)">
+            <div class="tooltip">スペシャルデリバリー</div>
+        </div>
+        <div class="icon-wrapper">
+            <img src="テホ/テホC.avif" alt="誘導サルヴォ" onclick="showDetail(2)">
+            <div class="tooltip">誘導サルヴォ</div>
+        </div>
+        <div class="icon-wrapper">
+            <img src="テホ/テホX.avif" alt="アルマゲドン" onclick="showDetail(3)">
+            <div class="tooltip">アルマゲドン</div>
+        </div>
+    </div>
+
+    <div class="detail-container">
+        <div class="detail-text" id="detail-text"></div>
+        <div class="detail-image">
+            <img src="placeholder.jpg" alt="" id="detail-img">
+        </div>
+    </div>
+
+    <script>
+        const details = [
+            {
+                img: "テホ/テホQ.gif",
+                text: "ステルスドローン"
+            },
+            {
+                img: "テホ/テホE.gif",
+                text: "スペシャルデリバリー"
+            },
+            {
+                img: "テホ/テホC.gif",
+                text: "誘導サルヴォ"
+            },
+            {
+                img: "テホ/テホX.gif",
+                text: "アルマゲドン"
+            }
+        ];
+
+        function showDetail(index) {
+            document.getElementById("detail-img").src = details[index].img;
+            document.getElementById("detail-text").textContent = details[index].text;
+
+            const icons = document.querySelectorAll(".icon-wrapper img");
+            icons.forEach((img, i) => {
+                img.classList.toggle("selected", i === index);
+            });
+        }
+
+        // 初期表示（最初のスキルを自動表示）
+        window.onload = () => {
+            showDetail(0);
+        };
+    </script>
+
+    <footer style="text-align: center; padding: 20px; color: #888;">
+        &copy; 2025 VALORANT Info Summary
+    </footer>
+
+</body>
+</html>

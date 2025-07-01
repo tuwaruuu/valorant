@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALORANT用語解説集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle, #020304 0%, #162330 70%, #000000 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #fd4f4f;
+            margin-bottom: 30px;
+            background: #fd4f4f;
+            border-bottom: 7px solid #fd4f4f;
+            padding-bottom: 5px;
+            font-size: 70px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .search-box {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px;
+            border: 3px solid #fd4f4f;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #searchInput:focus {
+            border-color: #ff4655;
+            box-shadow: 0 0 20px rgba(255, 70, 85, 0.3);
+        }
+
+        .term {
+            background: radial-gradient(circle, #020304 0%, #162330 70%, #000000 100%);
+            margin-bottom: 20px;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            
+        }
+
+        .term:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .term-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #ff8800;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .term-tag {
+            background: linear-gradient(45deg, #1c0767, #010e2e);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .term-description {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .term-example {
+            background: linear-gradient(45deg, #1c0767, #041234);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            border-left: 3px solid #12093c;
+            overflow-x: auto;
+            font-style: italic;
+            color: #b6b6b6;
+        }
+
+        .category-filter {
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background: linear-gradient(45deg, #1c0767, #010e2e);
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 70, 85, 0.3);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(45deg, #ff4655, #9d1717);
+        }
+
+        .no-results {
+            text-align: center;
+            color: #5b5a5a;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        .valorant-accent {
+            color: #ff4655;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .category-filter {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 200px;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VALORANT用語解説集</h1>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="用語を検索...">
+        </div>
+
+        <div class="category-filter">
+            <button class="filter-btn active" onclick="filterCategory('all')">すべて</button>
+            <button class="filter-btn" onclick="filterCategory('アルファベット')">アルファベット</button>
+            <button class="filter-btn" onclick="filterCategory('ア行')">ア行</button>
+            <button class="filter-btn" onclick="filterCategory('カ行')">カ行</button>
+            <button class="filter-btn" onclick="filterCategory('サ行')">サ行</button>
+            <button class="filter-btn" onclick="filterCategory('タ行')">タ行</button>
+            <button class="filter-btn" onclick="filterCategory('ナ行')">ナ行</button>
+            <button class="filter-btn" onclick="filterCategory('ハ行')">ハ行</button>
+            <button class="filter-btn" onclick="filterCategory('マ行')">マ行</button>
+            <button class="filter-btn" onclick="filterCategory('ヤ・ラ・ワ行')">ヤ・ラ・ワ行</button>
+        </div>
+
+        <div id="termsList">
+            <!-- アルファベット -->
+            <div class="term" data-category="アルファベット">
+                <div class="term-name">ADS <span class="term-tag">アルファベット</span></div>
+                <div class="term-description">Aim Down Sightの略。スコープを覗いている状態のことを指す。</div>
+                <div class="term-example">スナイパーライフルやバンダルで右クリックしてスコープを覗く状態</div>
+            </div>
+
+            <div class="term" data-category="アルファベット">
+                <div class="term-name">AFK <span class="term-tag">アルファベット</span></div>
+                <div class="term-description">Away From Keyboardの略。オンラインゲームにおいて主に離席、接続切れのことを指す言葉。</div>
+                <div class="term-example">「AFKの人がいるから4v5になってしまった」</div>
+            </div>
+
+            <div class="term" data-category="アルファベット">
+                <div class="term-name">CT <span class="term-tag">アルファベット</span></div>
+                <div class="term-description">Counter Terroristの略。主に防衛側リスポーン付近のエリアを指すマップ名称として使われる。CTベースとも。（攻撃側はTベース）由来は他のFPSゲームで防衛側を指す用語。</div>
+                <div class="term-example">「CTに敵がいるから注意して」</div>
+            </div>
+
+            <div class="term" data-category="アルファベット">
+                <div class="term-name">DD <span class="term-tag">アルファベット</span></div>
+                <div class="term-description">Double Doorの略。ヘイヴンのCの小部屋など、2枚の扉があるエリアのことを指す。</div>
+                <div class="term-example">ヘイヴンマップのCサイト近くの部屋</div>
+            </div>
+
+            <div class="term" data-category="アルファベット">
+                <div class="term-name">GG <span class="term-tag">アルファベット</span></div>
+                <div class="term-description">Good Gameの略。主にゲーム終了時に使う「お疲れ様」のような意味を持つネットスラング。</div>
+                <div class="term-example">試合終了後にチャットで「GG」と送る</div>
+            </div>
+
+            <div class="term" data-category="アルファベット">
+                <div class="term-name">IGL <span class="term-tag">アルファベット</span></div>
+                <div class="term-description">In Game Leaderの略。チームにおいて、リーダーとして味方に作戦の指示を出す人のこと。</div>
+                <div class="term-example">「IGLの指示に従ってAサイトに集合しよう」</div>
+            </div>
+
+            <div class="term" data-category="アルファベット">
+                <div class="term-name">NT <span class="term-tag">アルファベット</span></div>
+                <div class="term-description">Nice Tryの略。惜しかった、ナイスファイトの意。</div>
+                <div class="term-example">クラッチに失敗した味方に「NT」と声をかける</div>
+            </div>
+
+            <div class="term" data-category="アルファベット">
+                <div class="term-name">OTP <span class="term-tag">アルファベット</span></div>
+                <div class="term-description">One Trick Ponyの略。特定の1キャラクターのみを使うプレイヤーのこと。</div>
+                <div class="term-example">「ジェットOTPの人だからジェットを譲ろう」</div>
+            </div>
+
+
+
+            <!-- ア行 -->
+            <div class="term" data-category="ア行">
+                <div class="term-name">アンチエコ <span class="term-tag">ア行</span></div>
+                <div class="term-description">こちらが武器を買い、相手がエコラウンドとなっているラウンドのこと。</div>
+                <div class="term-example">相手のエコを読んで有利なポジションを取る</div>
+            </div>
+
+            <div class="term" data-category="ア行">
+                <div class="term-name">裏取り <span class="term-tag">ア行</span></div>
+                <div class="term-description">相手の背後のルートから近寄り、不意を突くこと。Valorantでは主に相手のベース側から背後を取る時に使われることが多い。</div>
+                <div class="term-example">「オーメンがTPで裏取りを狙っている」</div>
+            </div>
+
+            <div class="term" data-category="ア行">
+                <div class="term-name">エコ <span class="term-tag">ア行</span></div>
+                <div class="term-description">武器購入を最低限に抑えて節約すること。全員でそれを行うラウンドをエコラウンドという。</div>
+                <div class="term-example">「次のラウンドはエコで行こう」</div>
+            </div>
+
+            <div class="term" data-category="ア行">
+                <div class="term-name">エルボー <span class="term-tag">ア行</span></div>
+                <div class="term-description">マップ名称として使われる用語。主にL字状になっているエリアを指すのに使われる。</div>
+                <div class="term-example">アセントのAサイト近くのL字エリア</div>
+            </div>
+
+            <div class="term" data-category="ア行">
+                <div class="term-name">エントリー <span class="term-tag">ア行</span></div>
+                <div class="term-description">サイト内などに一番最初に突入すること。</div>
+                <div class="term-example">「デュエリストがエントリーして道を作る」</div>
+            </div>
+
+            <div class="term" data-category="ア行">
+                <div class="term-name">オーバーピーク <span class="term-tag">ア行</span></div>
+                <div class="term-description">ピーク方法の一種で、遮蔽物から大きく飛び出るピークのこと。</div>
+                <div class="term-example">角から大きく飛び出して敵の位置を確認する</div>
+            </div>
+
+            <div class="term" data-category="ア行">
+                <div class="term-name">オフアングル <span class="term-tag">ア行</span></div>
+                <div class="term-description">遮蔽物の真横や部屋の角などの予想しやすい場所（コモンアングル）ではなく、相手にとって予想外のポジションのこと。</div>
+                <div class="term-example">敵が予想しない位置からキルを狙う</div>
+            </div>
+
+            <div class="term" data-category="ア行">
+                <div class="term-name">オープン設置 <span class="term-tag">ア行</span></div>
+                <div class="term-description">多くの射線が通る開けた場所での設置のこと。</div>
+                <div class="term-example">サイト中央の見通しの良い場所にスパイクを設置</div>
+            </div>
+
+            <div class="term" data-category="ア行">
+                <div class="term-name">オルト射撃 <span class="term-tag">ア行</span></div>
+                <div class="term-description">特定の武器で可能な右クリック射撃のこと。</div>
+                <div class="term-example">クラシックやスティンガーの右クリックバースト射撃</div>
+            </div>
+
+
+
+
+
+            <!-- カ行 -->
+            <div class="term" data-category="カ行">
+                <div class="term-name">ガチ解除 <span class="term-tag">カ行</span></div>
+                <div class="term-description">敵がまだ残っている状態で、最後まで解除し続けること。</div>
+                <div class="term-example">時間がないので敵がいても解除を続行する</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">解除フェイク <span class="term-tag">カ行</span></div>
+                <div class="term-description">一瞬だけ解除を行うことで解除音を鳴らして敵を引きだす戦術。</div>
+                <div class="term-example">解除音で敵を誘い出してキルを狙う</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">カバー <span class="term-tag">カ行</span></div>
+                <div class="term-description">味方が敵に倒された時、または倒されかけている時に助けに入り、その敵を倒すこと。</div>
+                <div class="term-example">「味方がピンチだからカバーに行く」</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">壁抜き <span class="term-tag">カ行</span></div>
+                <div class="term-description">弾が貫通する特定の壁や遮蔽物の向こうから敵を撃つこと。</div>
+                <div class="term-example">オーディンで壁越しに敵を攻撃する</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">キープ <span class="term-tag">カ行</span></div>
+                <div class="term-description">そのラウンドの勝利を諦め、生存して武器を次ラウンドに持ち越すこと。</div>
+                <div class="term-example">「勝てないから武器をキープしよう」</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">決め撃ち <span class="term-tag">カ行</span></div>
+                <div class="term-description">敵がいる可能性がある場所に出る際に、その場所を撃ちながら出ること。</div>
+                <div class="term-example">角の向こうに敵がいると予測して撃ちながら出る</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">キャリー <span class="term-tag">カ行</span></div>
+                <div class="term-description">特定のプレイヤーが試合に大きく貢献しチームを勝利に導くこと。またそのプレイヤーのこと。</div>
+                <div class="term-example">「彼がキャリーしてくれたおかげで勝てた」</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">空爆 <span class="term-tag">カ行</span></div>
+                <div class="term-description">投擲系スキルを空に向かって放ち、壁やエリアなどを超えて特定のポジションに落とすこと。</div>
+                <div class="term-example">ブリーチのフォルトラインを空爆で決める</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">クリアリング <span class="term-tag">カ行</span></div>
+                <div class="term-description">そのエリア内に敵がいないことを確認し安全を確保すること。</div>
+                <div class="term-example">「サイトをクリアリングしてから設置しよう」</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">クロスを組む <span class="term-tag">カ行</span></div>
+                <div class="term-description">味方二人が別々の地点から同時に一方向に対して射線を通している状態。</div>
+                <div class="term-example">二人で挟み撃ちの体制を作る</div>
+            </div>
+
+            <div class="term" data-category="カ行">
+                <div class="term-name">腰撃ち <span class="term-tag">カ行</span></div>
+                <div class="term-description">スコープを覗いていない状態で射撃すること。</div>
+                <div class="term-example">近距離戦では腰撃ちの方が有効な場合がある</div>
+            </div>
+
+
+
+
+            <!-- サ行 -->
+            <div class="term" data-category="サ行">
+                <div class="term-name">サイト <span class="term-tag">サ行</span></div>
+                <div class="term-description">スパイク設置ポイントがあるエリアのこと。</div>
+                <div class="term-example">AサイトやBサイトなど</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">ジャンプピーク <span class="term-tag">サ行</span></div>
+                <div class="term-description">ジャンプして一瞬遮蔽物から体を出して相手を確認するピーク方法。</div>
+                <div class="term-example">高い場所から情報を取る際に使用</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">ショルダーピーク（ジグルピーク） <span class="term-tag">サ行</span></div>
+                <div class="term-description">自分の肩が少し見える程度に小さく体を出すピーク方法。自分視点では相手は見えない。</div>
+                <div class="term-example">敵の反応を見るために肩だけ出す</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">ショート <span class="term-tag">サ行</span></div>
+                <div class="term-description">マップ名称の一種。主にサイトに続く道の内、短い道や小部屋のことを指す。</div>
+                <div class="term-example">バインドのAショートなど</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">スクリム <span class="term-tag">サ行</span></div>
+                <div class="term-description">チーム同士で行う練習試合のこと。</div>
+                <div class="term-example">「今夜スクリムがあるから参加してください」</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">スタック <span class="term-tag">サ行</span></div>
+                <div class="term-description">全員もしくは複数人で同じ場所に固まること。</div>
+                <div class="term-example">「Aサイトに4人でスタックしよう」</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">ストッピング <span class="term-tag">サ行</span></div>
+                <div class="term-description">射撃の瞬間に足を止めること。Valorantではこれを行わないと弾が正確に飛ばない。</div>
+                <div class="term-example">移動しながら撃つ際は一瞬止まって撃つ</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">スモーク <span class="term-tag">サ行</span></div>
+                <div class="term-description">ブリムストーンのスカイスモークやオーメンのダークカヴァーのように、主に球状に視界を遮断するアビリティのこと。縮めてモクとも。</div>
+                <div class="term-example">「Aサイトにスモークを焚いて進入しよう」</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">スリフティー <span class="term-tag">サ行</span></div>
+                <div class="term-description">エコラウンドで勝利した際など、相手より消費した金額が少ないラウンドで勝利すること。</div>
+                <div class="term-example">相手のフルバイに対してエコで勝利</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">セカンドバイ <span class="term-tag">サ行</span></div>
+                <div class="term-description">1ラウンド目で敗北した際に2ラウンド目でエコを行わずに購入を行うこと。</div>
+                <div class="term-example">「初回負けたけどセカンドバイで行こう」</div>
+            </div>
+
+            <div class="term" data-category="サ行">
+                <div class="term-name">セットアップ <span class="term-tag">サ行</span></div>
+                <div class="term-description">予め決めておいた戦術（スキルの組み合わせやエントリー方法など）のこと。スポーツなどで使われるセットプレイと同義。</div>
+                <div class="term-example">サイトエクセキュートのセットアップを練習</div>
+            </div>
+
+
+
+
+            <!-- タ行 -->
+            <div class="term" data-category="タ行">
+                <div class="term-name">タップ撃ち <span class="term-tag">タ行</span></div>
+                <div class="term-description">射撃の際に撃ち続けず、主に1〜2発ずつ間隔を置いて撃つこと。</div>
+                <div class="term-example">遠距離ではタップ撃ちで精度を上げる</div>
+            </div>
+
+            <div class="term" data-category="タ行">
+                <div class="term-name">ダブルエリミネーション <span class="term-tag">タ行</span></div>
+                <div class="term-description">トーナメント形式の1種。全チーム1度までなら負けてもよく、2度負けるまで優勝のチャンスがある形式。</div>
+                <div class="term-example">VCTなどの大会で採用される形式</div>
+            </div>
+
+            <div class="term" data-category="タ行">
+                <div class="term-name">ダブルピーク <span class="term-tag">タ行</span></div>
+                <div class="term-description">2人で同時にピークすること。</div>
+                <div class="term-example">「一緒にダブルピークしよう」</div>
+            </div>
+
+            <div class="term" data-category="タ行">
+                <div class="term-name">チームエース <span class="term-tag">タ行</span></div>
+                <div class="term-description">チームメンバーがそれぞれ1キルした状態でラウンド勝利すること。</div>
+                <div class="term-example">全員が1キルずつ取って勝利</div>
+            </div>
+
+            <div class="term" data-category="タ行">
+                <div class="term-name">詰め待ち <span class="term-tag">タ行</span></div>
+                <div class="term-description">主に攻撃側で、防衛側の相手が前に詰めてくるのを待つ戦法。</div>
+                <div class="term-example">敵の積極的な守備を逆に利用する戦術</div>
+            </div>
+
+            <div class="term" data-category="タ行">
+                <div class="term-name">ティルト <span class="term-tag">タ行</span></div>
+                <div class="term-description">精神的な要因などからプレイが雑になってしまうこと。</div>
+                <div class="term-example">連敗でティルトして判断力が鈍る</div>
+            </div>
+
+            <div class="term" data-category="タ行">
+                <div class="term-name">ドライピーク <span class="term-tag">タ行</span></div>
+                <div class="term-description">スキルなどを使わずに、音を立てず静かにピークすること。</div>
+                <div class="term-example">情報取りのために静かに確認する</div>
+            </div>
+
+            <div class="term" data-category="タ行">
+                <div class="term-name">トレードキル <span class="term-tag">タ行</span></div>
+                <div class="term-description">味方が倒された際にその敵を倒して1キル交換の状態にすること。</div>
+                <div class="term-example">「味方のトレードを取りに行こう」</div>
+            </div>
+
+            <div class="term" data-category="タ行">
+                <div class="term-name">トロール <span class="term-tag">タ行</span></div>
+                <div class="term-description">日本語の「荒らし」に近い意味を持つ海外のスラング。FPSでは主にわざと負けに導くようなプレイや勝つ気のないプレイに対して使われる。</div>
+                <div class="term-example">チームの迷惑になる行為全般</div>
+            </div>
+
+
+
+
+
+            <!-- ナ行 -->
+            <div class="term" data-category="ナ行">
+                <div class="term-name">ナーフ <span class="term-tag">ナ行</span></div>
+                <div class="term-description">キャラクターや装備などがアップデートによって弱体化されること。</div>
+                <div class="term-example">「ジェットがナーフされて使いにくくなった」</div>
+            </div>
+
+            <div class="term" data-category="ナ行">
+                <div class="term-name">ノンスコ <span class="term-tag">ナ行</span></div>
+                <div class="term-description">スコープを覗いていない状態。</div>
+                <div class="term-example">オペレーターをノンスコで撃つ高難度テクニック</div>
+            </div>
+
+
+
+
+
+            <!-- ハ行 -->
+            <div class="term" data-category="ハ行">
+                <div class="term-name">バイ <span class="term-tag">ハ行</span></div>
+                <div class="term-description">スキルや装備を購入すること。</div>
+                <div class="term-example">「フルバイで行こう」</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">バフ <span class="term-tag">ハ行</span></div>
+                <div class="term-description">ナーフの逆で、キャラクターや装備などがアップデートによって強化されること。</div>
+                <div class="term-example">「ヨルがバフされて使いやすくなった」</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">ファーストブラッド <span class="term-tag">ハ行</span></div>
+                <div class="term-description">ラウンドで一番最初に発生したキル（デス）。</div>
+                <div class="term-example">「ファーストブラッドを取られたので不利」</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">フィジカル <span class="term-tag">ハ行</span></div>
+                <div class="term-description">アビリティや立ち回りなどを含めない単純な撃ち合いの強さを指す用語。</div>
+                <div class="term-example">「フィジカルが強いプレイヤー」</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">フェイク <span class="term-tag">ハ行</span></div>
+                <div class="term-description">本命ではないサイトにスキルなどのアクションを起こし、攻めるサイトを勘違いさせる戦術。</div>
+                <div class="term-example">「Aフェイクを掛けてからBを攻める」</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">フラッシュ <span class="term-tag">ハ行</span></div>
+                <div class="term-description">フェニックスのカーブボールのような、投擲し炸裂させて敵の視界を奪うスキルのこと。</div>
+                <div class="term-example">「フラッシュを焚いてからエントリーしよう」</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">プリエイム <span class="term-tag">ハ行</span></div>
+                <div class="term-description">相手がいる場所を予測してあらかじめエイムを合わせておくエイム方法。</div>
+                <div class="term-example">角の向こうの敵の頭の位置にエイムを置いておく</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">フリック <span class="term-tag">ハ行</span></div>
+                <div class="term-description">マウスを瞬時に大きく動かしてエイムを合わせること。</div>
+                <div class="term-example">急に現れた敵に対してフリックショットを決める</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">フルバイ <span class="term-tag">ハ行</span></div>
+                <div class="term-description">購入できる装備を限界まで購入すること。</div>
+                <div class="term-example">バンダル＋フルアーマー＋アビリティ全購入</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">ベイト <span class="term-tag">ハ行</span></div>
+                <div class="term-description">英語で「エサ」の意で、自身もしくは味方に囮にして敵を倒す戦法のこと。</div>
+                <div class="term-example">「僕がベイトになるから後ろからトレードして」</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">ヘッドライン <span class="term-tag">ハ行</span></div>
+                <div class="term-description">エイムがキャラクターの頭の位置に合うラインのこと。</div>
+                <div class="term-example">常にヘッドラインに合わせてエイムする</div>
+            </div>
+
+            <div class="term" data-category="ハ行">
+                <div class="term-name">ヘブン <span class="term-tag">ハ行</span></div>
+                <div class="term-description">マップ名称の一種。主にサイト内の高台など、高い位置のエリア名称として使われる。</div>
+                <div class="term-example">バインドのAサイトヘブンなど</div>
+            </div>
+
+
+
+
+
+            <!-- マ行 -->
+            <div class="term" data-category="マ行">
+                <div class="term-name">メタ <span class="term-tag">マ行</span></div>
+                <div class="term-description">ゲーム内におけるキャラや構成、立ち回りなどの流行。メタゲームともいう。</div>
+                <div class="term-example">「現在のメタではセンチネルが重要」</div>
+            </div>
+
+            <div class="term" data-category="マ行">
+                <div class="term-name">モク <span class="term-tag">マ行</span></div>
+                <div class="term-description">スモークのこと。</div>
+                <div class="term-example">「モクを焚いて進入しよう」</div>
+            </div>
+
+            <div class="term" data-category="マ行">
+                <div class="term-name">モロトフ <span class="term-tag">マ行</span></div>
+                <div class="term-description">ブリムストーンのインセンディアリーのような一定時間地面にダメージエリアを作るスキルのこと。フェニックスのアビリティ名から。</div>
+                <div class="term-example">「モロトフで敵の進路を塞ごう」</div>
+            </div>
+
+
+
+
+            <!-- ヤ・ラ・ワ行 -->
+            <div class="term" data-category="ヤ・ラ・ワ行">
+                <div class="term-name">ラーク <span class="term-tag">ヤ・ラ・ワ行</span></div>
+                <div class="term-description">他のチームメンバーと別の方向に行き、隠れて単独行動をすること。</div>
+                <div class="term-example">「ラークで敵の裏を取りに行く」</div>
+            </div>
+
+            <div class="term" data-category="ヤ・ラ・ワ行">
+                <div class="term-name">ラッシュ <span class="term-tag">ヤ・ラ・ワ行</span></div>
+                <div class="term-description">複数人で同じエリアを一気に攻めること。</div>
+                <div class="term-example">「5人でAサイトラッシュしよう」</div>
+            </div>
+
+            <div class="term" data-category="ヤ・ラ・ワ行">
+                <div class="term-name">リコイル <span class="term-tag">ヤ・ラ・ワ行</span></div>
+                <div class="term-description">銃を撃った際の反動のこと。</div>
+                <div class="term-example">バンダルのリコイルパターンを覚える</div>
+            </div>
+
+            <div class="term" data-category="ヤ・ラ・ワ行">
+                <div class="term-name">リコイルコントロール <span class="term-tag">ヤ・ラ・ワ行</span></div>
+                <div class="term-description">銃の反動を制御すること。</div>
+                <div class="term-example">マウスを下に引いてリコイルコントロールする</div>
+            </div>
+
+            <div class="term" data-category="ヤ・ラ・ワ行">
+                <div class="term-name">リテイク <span class="term-tag">ヤ・ラ・ワ行</span></div>
+                <div class="term-description">攻撃側に制圧されスパイクを設置されたエリアを防衛側が取り返すこと。</div>
+                <div class="term-example">「サイトリテイクをしよう」</div>
+            </div>
+
+            <div class="term" data-category="ヤ・ラ・ワ行">
+                <div class="term-name">ローテート <span class="term-tag">ヤ・ラ・ワ行</span></div>
+                <div class="term-description">攻め込もうとしていたサイトから別のサイトに攻め先を転換すること。</div>
+                <div class="term-example">「Aが厚いからBにローテートしよう」</div>
+            </div>
+
+            <div class="term" data-category="ヤ・ラ・ワ行">
+                <div class="term-name">ロング <span class="term-tag">ヤ・ラ・ワ行</span></div>
+                <div class="term-description">マップ名称の一種。主にサイトに続く道の内、長い道のことを指す。</div>
+                <div class="term-example">ダストⅡのAロングなど</div>
+            </div>
+
+
+
+
+
+            <div class="term" data-category="ヤ・ラ・ワ行">
+                <div class="term-name">ワンウェイスモーク <span class="term-tag">ヤ・ラ・ワ行</span></div>
+                <div class="term-description">相手側からは見えないが、こちら側から先に敵の一部を確認できるようなスモークのこと。</div>
+                <div class="term-example">オーメンの特殊なスモーク配置テクニック</div>
+            </div>
+
+            <div class="term" data-category="ヤ・ラ・ワ行">
+                <div class="term-name">ワンタップ <span class="term-tag">ヤ・ラ・ワ行</span></div>
+                <div class="term-description">1発のみの射撃のこと。またその射撃で敵をキルすること。</div>
+                <div class="term-example">「ワンタップヘッドショットで倒した」</div>
+            </div>
+        </div>
+
+
+
+
+        <div id="noResults" class="no-results" style="display: none;">
+            それほんとに存在してる言葉？造語じゃない？とにかく探しものはなかったよ、はい残念でした。
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const termsList = document.getElementById('termsList');
+        const noResults = document.getElementById('noResults');
+        const allTerms = document.querySelectorAll('.term');
+
+        // 検索機能
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            let hasResults = false;
+
+            allTerms.forEach(term => {
+                const termName = term.querySelector('.term-name').textContent.toLowerCase();
+                const termDescription = term.querySelector('.term-description').textContent.toLowerCase();
+                
+                if (termName.includes(searchTerm) || termDescription.includes(searchTerm)) {
+                    term.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    term.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = hasResults ? 'none' : 'block';
+        });
+
+        // カテゴリフィルター機能
+        function filterCategory(category) {
+            // ボタンのアクティブ状態を更新
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // 用語をフィルター
+            let hasResults = false;
+            allTerms.forEach(term => {
+                if (category === 'all' || term.getAttribute('data-category') === category) {
+                    term.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    term.style.display = 'none';
+                }
+            });
+
+            // 検索ボックスをクリア
+            searchInput.value = '';
+            noResults.style.display = hasResults ? 'none' : 'block';
+        }
+
+        // ページ読み込み時にすべての用語を表示
+        window.addEventListener('load', function() {
+            allTerms.forEach(term => {
+                term.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

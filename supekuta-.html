@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>スペクター</title>
+    <style>
+        body {
+            background: radial-gradient(circle, #020304 0%, #162330 70%, #000000 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #fd4f4f;
+            border-bottom: 7px solid #fd4f4f;
+            padding-bottom: 5px;
+            font-size: 60px;
+        }
+
+        h3 {
+            color: #ff8800;
+            padding-bottom: 5px;
+            font-size: 30px;
+        }
+
+        main {
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+        }
+
+        .text-box {
+            flex: 1;
+            padding-right: 30px;
+        }
+
+        .text-box p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        .image-box {
+            flex: 1;
+            text-align: right;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .detail-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+        }
+
+        .detail-text {
+            flex: 1;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .detail-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .detail-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+
+            .container,
+            .detail-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .text-box,
+            .detail-text {
+                padding: 0;
+            }
+
+            .image-box,
+            .detail-image {
+                text-align: center;
+                margin-top: 20px;
+            }
+        }
+
+        #detail-text {
+            font-size: 70px;
+            color: #fd4f4f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="text-box">
+            <h3></h3>
+            <h2>スペクター</h2>
+            <p>
+                スペクターは弾道と銃声を敵から隠すアタッチメントが装備されたサブマシンガンであり、
+                火力・精度・リコイルの全てが初心者でも扱いやすい性能となっているのが特徴的です。
+                移動中の拡散率が低く設定されているので、近距離ならばストッピングをせずとも命中させやすく、
+                バースト撃ちを活用することで中距離戦でも性能を十分に発揮することができます。
+                ただし、扱いやすくも性能としてはヴァンダルやファントムの下位互換だという点は覚えておきましょう。
+            </p>
+        </div>
+        <div class="image-box">
+            <img src="buki\top\スペクタートップ.png" alt="スペクター">
+        </div>
+    </div>
+
+
+
+    <footer style="text-align: center; padding: 20px; color: #888;">
+        &copy; 2025 VALORANT Info Summary
+    </footer>
+
+</body>
+
+</html>
